@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+        <link href="./mainstyles.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+    </head>
+    <body>
+        <header>
+            <img src="./images/logo.svg" alt="logo" aria-label="Base Apparel logo" class="logo"/>
+        </header>
+        <aside class="main">
+            <h1 class="main_reg">we're</h1>
+            <h1 class="main_dark">coming<br/>soon</h1>
+            <p>
+                Hello fellow shoppers! We're currently building our new fashion store. Add your email below
+                to stay up-to-date with announcements and our launch deals.
+            </p>
+            <form action="#null" name="email-form"  class="form">
+                <label for="email">
+                <input type="email" placeholder="Email Address" class="form_email"/>
+                <button class="form_btn">
+                    <img src="./images/icon-arrow.svg" alt="arrow to continue" aria-label="form button arrow"/>
+                </button>
+                <p id="error">Please provide a valid email</p>
+                </label>
+            </form>
+        </aside>
+        <div class="img">
+            <img src="./images/hero-desktop.jpg" class="img_desktop"/>
+            <img src="./images/hero-mobile.jpg" class="img_mobile"/>
+        </div>
+        <script>
+            $(".form_btn").click(function(e) {
+            const regex = /[a-zA-Z]+[1-9]*[@]{1}[a-z]+[.]{1}[a-z]/;
+            let email  = $(".form_email").val();
+            const error = $("#error");
+
+            if (!regex.test(email)) {
+                $(".form_email").css("border", "2px solid hsl(0, 93%, 68%)");
+                $(".form_email").css("background", "URL(./images/icon-error.svg) no-repeat scroll 75%")
+                $("#error").css("display", "block");
+                $(".form_email").focus();
+            } else {
+                $("#error").css("display", "none");
+                $(".form_email").css("border", "1px solid hsl(0, 36%, 70%)");
+                $(".form_email").css("background", "none");
+                $(".form_email").focus();
+            }
+            e.preventDefault();
+        });
+        </script>
+    </body>
+    </html>
+        
